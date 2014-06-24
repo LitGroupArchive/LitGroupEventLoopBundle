@@ -1,0 +1,40 @@
+# Project #
+###########
+build/
+
+# Composer #
+############
+/composer.lock
+/vendor
+composer.phar
+
+# IDE files   #
+###############
+/.buildpath
+/.settings
+/.project
+/.metadata
+
+/nbproject
+
+*.sublime*
+
+*~
+
+/.idea
+/*.iml
+
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+# Keep .gitkeep #
+#################
+!.gitkeep

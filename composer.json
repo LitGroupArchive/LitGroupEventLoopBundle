@@ -1,0 +1,35 @@
+{
+    "name": "litgroup/event-loop-bundle",
+    "description": "React EventLoop integration for Symfony2.",
+    "keywords": ["event-loop", "async", "react"],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Roman Shamritskiy",
+            "email": "roman@litgroup.ru"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "symfony/framework-bundle": "~2.3",
+        "react/event-loop": "~0.4"
+
+
+},
+    "require-dev": {
+        "phpunit/phpunit": "4.1.*@stable"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "LitGroup\\Bundle\\EventLoopBundle\\": ""
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "minimum-stability": "dev"
+}
