@@ -46,7 +46,7 @@ class TimeUnitTest extends \PHPUnit_Framework_TestCase
         return [
             ['10 s'  ],
             ['10,3'  ],
-            ['10,3m'  ],
+            ['10,3m' ],
             ['100d'  ],
             ['10h11m'],
         ];

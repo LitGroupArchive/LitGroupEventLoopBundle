@@ -38,14 +38,12 @@ class TimeUnit
             return (double) $str;
         }
 
-        $isCorrect = preg_match('/^([0-9]+(?:\.[0-9]+)?){1}(ms|s|m|h)?$/Ds', $str, $matches);
-
-        if (!$isCorrect) {
-            throw new \InvalidArgumentException();
+        $hasMatches = (bool) preg_match('/^([0-9]+(?:\.[0-9]+)?){1}(ms|s|m|h)?$/Ds', $str, $matches);
+        if (!$hasMatches) {
+            throw new \InvalidArgumentException('Time interval is invalid.');
         }
 
         list (, $value, $unit) = $matches;
-
         $value = (double) $value;
 
         switch ($unit) {
@@ -55,7 +53,7 @@ class TimeUnit
                 return $value * 60.0;
             case 'h':
                 return $value * 3600.0;
-            default:
+            default: // Interpreted as seconds (s)
                 return $value;
         }
     }
