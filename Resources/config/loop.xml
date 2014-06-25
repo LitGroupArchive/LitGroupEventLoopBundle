@@ -5,9 +5,17 @@
         http://symfony.com/schema/dic/services/services-1.0.xsd"
         >
 
+    <parameters>
+        <parameter key="litgroup_event_loop.factory.class">LitGroup\Bundle\EventLoopBundle\DefaultLoopFactory</parameter>
+    </parameters>
+
     <services>
         <!-- Event Loop -->
-        <service id="litgroup_event_loop" class="React\EventLoop\LoopInterface" factory-class="React\EventLoop\Factory" factory-method="create"/>
+        <service id="litgroup_event_loop" class="React\EventLoop\LoopInterface"
+                 factory-service="litgroup_event_loop.factory" factory-method="create"/>
+
+        <!-- Event Loop Factory -->
+        <service id="litgroup_event_loop.factory" class="%litgroup_event_loop.factory.class%"/>
     </services>
 
 </container>

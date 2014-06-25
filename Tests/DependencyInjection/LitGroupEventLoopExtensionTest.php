@@ -18,6 +18,26 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 class LitGroupEventLoopExtensionTest extends TestCase
 {
     /** @test */
+    public function testLoopFactory()
+    {
+        $container = new ContainerBuilder();
+        $extension = new LitGroupEventLoopExtension();
+        $extension->load([], $container);
+
+        $this->assertSame(
+             'LitGroup\Bundle\EventLoopBundle\DefaultLoopFactory',
+             $container->getParameter('litgroup_event_loop.factory.class')
+        );
+        $this->assertTrue(
+             $container->hasDefinition('litgroup_event_loop.factory'),
+             'Factory service is not defined.'
+        );
+
+        $definition = $container->getDefinition('litgroup_event_loop.factory');
+        $this->assertSame('%litgroup_event_loop.factory.class%', $definition->getClass());
+    }
+
+    /** @test */
     public function testLoopService()
     {
         $container = new ContainerBuilder();
@@ -28,7 +48,7 @@ class LitGroupEventLoopExtensionTest extends TestCase
 
         $definition = $container->getDefinition('litgroup_event_loop');
         $this->assertEquals('React\EventLoop\LoopInterface', $definition->getClass());
-        $this->assertEquals('React\EventLoop\Factory', $definition->getFactoryClass());
+        $this->assertEquals('litgroup_event_loop.factory', $definition->getFactoryService());
         $this->assertEquals('create', $definition->getFactoryMethod());
         $this->assertTrue($definition->isPublic());
 
