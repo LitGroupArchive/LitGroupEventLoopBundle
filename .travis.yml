@@ -25,4 +25,4 @@ install:
     - composer install --dev --prefer-source
 
 script:
-    - vendor/bin/phpunit --configuration phpunit.xml.dist
+    - vendor/bin/phpunit --configuration phpunit.xml.dist --coverage-text
