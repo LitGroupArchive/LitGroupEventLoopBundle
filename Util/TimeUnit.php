@@ -16,6 +16,14 @@ class TimeUnit
     /**
      * Parses time interval in seconds from string with time unit.
      *
+     * Supported time units:
+     *  - ms (milliseconds)
+     *  - s (seconds)
+     *  - m (minutes)
+     *  - h (hours)
+     *
+     * If no time unit specified — interpreted as seconds.
+     *
      * Example:
      *
      *     10   => 10.0
@@ -26,19 +34,19 @@ class TimeUnit
      *     1h   => 3600.0
      *     1.5h => 5400.0
      *
-     * @param string $str
+     * @param string|integer|double $interval
      *
      * @return double
      *
      * @throws \InvalidArgumentException
      */
-    public static function toSeconds($str)
+    public static function toSeconds($interval)
     {
-        if (is_numeric($str)) {
-            return (double) $str;
+        if (is_numeric($interval)) {
+            return (double) $interval;
         }
 
-        $hasMatches = (bool) preg_match('/^([0-9]+(?:\.[0-9]+)?){1}(ms|s|m|h)?$/Ds', $str, $matches);
+        $hasMatches = (bool) preg_match('/^([0-9]+(?:\.[0-9]+)?){1}(ms|s|m|h)?$/Ds', $interval, $matches);
         if (!$hasMatches) {
             throw new \InvalidArgumentException('Time interval is invalid.');
         }
