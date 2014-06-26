@@ -66,6 +66,64 @@ $loop = $container->get('litgroup_event_loop');
 $loop->run();
 ```
 
+### Periodic Services
+
+__Periodic service__ — service, defined in the dependency injection container, marked by tag `litgroup_event_loop.periodic`. These services will be called periodically when loop is running.
+
+Tag has two required attributes:
+  * `interval` — interval between calls;
+  * `method` — service method to call.
+  
+Interval can be set as seconds represented by double value or as string with time units (`10ms`, `1m`). Interval cannot be less then 1ms.
+
+String representation supports four units:
+  * `ms` milliseconds
+  * `s` seconds
+  * `m` minutes
+  * `h` hours
+  
+Units cannot be mixed.
+
+Example: `10s`, `15m`, `1.5h`
+
+#### Periodic service definition's example
+
+Service class:
+```php
+<?php
+
+class PeriodicService
+{
+	public function tick()
+	{
+		echo "Tick!";
+    }
+}
+```
+
+DIC configuration:
+``` xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services
+        http://symfony.com/schema/dic/services/services-1.0.xsd"
+        >
+
+    <services>        
+
+        <service id="periodic_service" class="PeriodicService">
+            <tag name="litgroup_event_loop.periodic" interval="1s" method="tick"/>
+        </service>
+
+    </services>
+
+</container>
+```
+
+Now, when event loop will be running `PeriodicService::tick()` will be called with period in 1 second.
+
+
 License
 -------
 
