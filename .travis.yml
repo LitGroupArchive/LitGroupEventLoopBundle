@@ -10,11 +10,15 @@ env:
     - SYMFONY_VERSION="2.4.*"
     - SYMFONY_VERSION="2.5.*"
     - SYMFONY_VERSION="dev-master"
+    - REACT_VERSION="0.3.*"
+    - REACT_VERSION="0.4.*"
+    - REACT_VERSION="dev-master"
 
 matrix:
     allow_failures:
         - php: hhvm
         - env: SYMFONY_VERSION="dev-master"
+        - env: REACT_VERSION="dev-master"
 
 install:
     - composer self-update

@@ -13,7 +13,7 @@
     "require": {
         "php": ">=5.4.0",
         "symfony/framework-bundle": "~2.3",
-        "react/event-loop": "~0.4"
+        "react/event-loop": "~0.3"
 
 
     },
