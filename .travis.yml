@@ -6,13 +6,18 @@ php:
     - hhvm
 
 env:
-    - SYMFONY_VERSION="2.3.*"
-    - SYMFONY_VERSION="2.4.*"
-    - SYMFONY_VERSION="2.5.*"
-    - SYMFONY_VERSION="dev-master"
-    - REACT_VERSION="0.3.*"
-    - REACT_VERSION="0.4.*"
-    - REACT_VERSION="dev-master"
+    -
+      SYMFONY_VERSION="2.3.*"
+      REACT_VERSION="0.4.*"
+    -
+      SYMFONY_VERSION="2.5.*"
+      REACT_VERSION="0.4.*"
+    -
+      SYMFONY_VERSION="2.5.*"
+      REACT_VERSION="0.3.*"
+    -
+      SYMFONY_VERSION="dev-master"
+      REACT_VERSION="dev-master"
 
 matrix:
     allow_failures:
@@ -22,6 +27,7 @@ matrix:
 
 install:
     - composer self-update
+    - composer require react/event-loop:${REACT_VERSION} --no-update
     - composer require symfony/framework-bundle:${SYMFONY_VERSION} --no-update
     - composer require symfony/monolog-bundle:${SYMFONY_VERSION} --no-update
     - composer require symfony/console:${SYMFONY_VERSION} --no-update
