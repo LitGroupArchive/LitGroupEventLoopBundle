@@ -10,7 +10,12 @@
 
 namespace LitGroup\Bundle\EventLoopBundle\Util;
 
-
+/**
+ * @internal
+ * @used-by \LitGroup\Bundle\EventLoopBundle\DependencyInjection\Compiler\PeriodicServicePass
+ *
+ * @author Roman Shamritskiy <roman@litgroup.ru>
+ */
 class TimeUnit
 {
     /**

@@ -11,9 +11,10 @@
 namespace LitGroup\Bundle\EventLoopBundle\Tests\Util;
 
 
+use LitGroup\Bundle\EventLoopBundle\Tests\TestCase;
 use LitGroup\Bundle\EventLoopBundle\Util\TimeUnit;
 
-class TimeUnitTest extends \PHPUnit_Framework_TestCase
+class TimeUnitTest extends TestCase
 {
     public function getToSecondsTests()
     {
