@@ -1,6 +1,8 @@
 LitGroupEventLoopBundle
 =======================
 
+🚫 **(This project is no longer maintained.)**
+
 This bundle integrates [react/event-loop][event-loop] library into the Symfony 2.
 
 [![Latest Stable Version](https://poser.pugx.org/litgroup/event-loop-bundle/v/stable.svg)](https://packagist.org/packages/litgroup/event-loop-bundle)
